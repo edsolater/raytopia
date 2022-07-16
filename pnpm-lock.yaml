@@ -41,16 +41,53 @@ importers:
       prettier: 2.7.1
       typescript: 4.7.4
 
+  packages/sail:
+    specifiers:
+      '@edsolater/fnkit': ^0.1.2
+      '@edsolater/hookit': ^0.1.2
+      '@edsolater/jfetch': ^0.1.2
+      '@edsolater/xstore': ^0.1.7
+      '@raydium-io/raydium-sdk': 1.1.0-beta.5
+      '@solana/wallet-adapter-base': ^0.9.7
+      '@solana/wallet-adapter-react': ^0.15.6
+      '@solana/wallet-adapter-wallets': ^0.16.5
+      '@solana/web3.js': ^1.47.2
+      '@types/bn.js': ^5.1.0
+      '@types/node': ^18.0.0
+      bn.js: ^5.2.1
+      prettier: ^2.7.1
+      react: ^18.2.0
+      typescript: ^4.7.4
+    dependencies:
+      '@edsolater/fnkit': 0.1.5
+      '@edsolater/hookit': 0.1.2
+      '@edsolater/jfetch': 0.1.2
+      '@edsolater/xstore': 0.1.7
+      '@raydium-io/raydium-sdk': 1.1.0-beta.5_5v7yr66cdcqn7alpmbfxte4oxm
+      '@solana/wallet-adapter-base': 0.9.9_@solana+web3.js@1.48.0
+      '@solana/wallet-adapter-react': 0.15.8_ndnhqkyj4wgxqpyl6ubyqhhzmy
+      '@solana/wallet-adapter-wallets': 0.16.8_@solana+web3.js@1.48.0
+      '@solana/web3.js': 1.48.0
+      '@types/bn.js': 5.1.0
+      bn.js: 5.2.1
+      react: 18.2.0
+    devDependencies:
+      '@types/node': 18.0.5
+      prettier: 2.7.1
+      typescript: 4.7.4
+
   packages/ui:
     specifiers:
       '@types/react': ^18.0.15
       '@types/react-dom': ^18.0.6
       '@vitejs/plugin-react': ^2.0.0
+      raytopia-sail: workspace:^0.1.0
       react: ^18.2.0
       react-dom: ^18.2.0
       typescript: ^4.7.4
       vite: ^3.0.0
     dependencies:
+      raytopia-sail: link:../sail
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     devDependencies:

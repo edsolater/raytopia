@@ -1,9 +1,11 @@
-import { Numberish, isString, eq } from '@edsolater/fnkit'
+import { eq, isString, Numberish } from '@edsolater/fnkit'
+import { Fraction } from '@raydium-io/raydium-sdk'
+import BN from 'bn.js'
 import { trimTailingZero } from '../temp/handleZero'
 import { toFractionWithDecimals } from './toFraction'
 
 export function toString(
-  n: Numberish | null | undefined,
+  n: Numberish | null | undefined | Fraction | BN ,
   options?: {
     /** @default 'auto' / 'auto [decimals]' */
     decimalLength?: number | 'auto' | 'auto ' | `auto ${number}`

@@ -4,8 +4,8 @@ import { Fraction, Token, TokenAmount } from '@raydium-io/raydium-sdk'
 import { Numberish, parseNumberInfo } from '@edsolater/fnkit'
 import { QuantumSOLToken, QuantumSOLAmount, HydratedTokenJsonInfo, isQuantumSOL, WSOLMint, isQuantumSOLVersionSOL, toQuantumSolAmount } from '../token'
 import { isToken } from './dataType'
-import toBN from './toBN'
-import toFraction from './toFraction'
+import { toBN } from './toBN'
+import { toFraction } from './toFraction'
 
 
 /**

@@ -1,6 +1,6 @@
 import { add, listToMap, map, Numberish, shakeNil } from '@edsolater/fnkit'
 import { PublicKeyish } from '@raydium-io/raydium-sdk'
-import toBN from '../../functions/toBN'
+import { toBN } from '../../functions/toBN'
 import toPubString, { isMintEqual } from '../../functions/toMintString'
 import { toTokenAmount } from '../../functions/toTokenAmount'
 import { QuantumSOL, SplToken, TokenAmount, toQuantumSolAmount, WSOL, WSOLMint } from '../../token'

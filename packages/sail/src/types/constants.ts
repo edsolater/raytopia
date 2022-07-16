@@ -2,6 +2,7 @@ import BN from 'bn.js'
 
 import { Fraction } from '@raydium-io/raydium-sdk'
 import { PublicKey } from '@solana/web3.js'
+import { Numberish } from '@edsolater/fnkit'
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 export type EnumStr = string & {}
@@ -22,7 +23,7 @@ export type NotFunctionValue = Exclude<any, AnyFn>
 export type Stringish = Primitive | Nullish | { toString(): any }
 export type Nullish = undefined | null
 export type PublicKeyish = HexAddress | PublicKey
-export type Numberish = number | string | bigint | Fraction | BN
+export type DexNumberish = Numberish | Fraction | BN
 export type BooleanLike = unknown // any value that can transform to boolean
 
 export type Entry<Key = any, Value = any> = [Key, Value]
@@ -54,3 +55,4 @@ export type SrcAddress = string
 export type PercentString = string
 export type DateInfo = string | number | Date
 
+export { PublicKey }

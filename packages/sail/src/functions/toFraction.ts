@@ -1,7 +1,8 @@
 import { Numberish, tryCatch, parseNumberInfo } from '@edsolater/fnkit'
 import { Fraction, Percent, Price, TokenAmount, ZERO } from '@raydium-io/raydium-sdk'
+import BN from 'bn.js'
 
-export default function toFraction(value: Numberish): Fraction {
+export function toFraction(value: Numberish | Fraction | BN): Fraction {
   //  to complete math format(may have decimal), not int
   if (value instanceof Percent) return new Fraction(value.numerator, value.denominator)
 
@@ -23,7 +24,7 @@ export default function toFraction(value: Numberish): Fraction {
   return new Fraction(details.numerator, details.denominator)
 }
 
-export function toFractionWithDecimals(value: Numberish): { fr: Fraction; decimals?: number } {
+export function toFractionWithDecimals(value: Numberish | Fraction | BN): { fr: Fraction; decimals?: number } {
   //  to complete math format(may have decimal), not int
   if (value instanceof Percent) return { fr: new Fraction(value.numerator, value.denominator) }
 

@@ -9,7 +9,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@edsolater/fnkit": "^0.1.5",
+    "@edsolater/hookit": "^0.1.2",
     "@edsolater/uikit": "^0.1.3",
+    "@edsolater/xstore": "^0.1.7",
+    "raytopia-sail": "workspace:^0.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

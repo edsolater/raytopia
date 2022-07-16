@@ -1,6 +1,6 @@
 import { flatMapEntries, groupBy, map, mapEntry, shakeNil } from '@edsolater/fnkit'
 import { jFetch } from '@edsolater/jfetch'
-import toTokenPrice from '../../functions/toTokenPrice'
+import { toTokenPrice } from '../../functions/toTokenPrice'
 import { tokenAtom } from '../atom'
 
 export async function refreshTokenPrice() {
