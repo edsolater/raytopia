@@ -1,0 +1,26 @@
+{
+  "name": "aerosol-sail",
+  "version": "0.1.0",
+  "scripts": {},
+  "type": "module",
+  "main": "src/index.ts",
+  "sideEffects": false,
+  "dependencies": {
+    "@edsolater/fnkit": "^0.1.2",
+    "@edsolater/hookit": "^0.1.2",
+    "@edsolater/jfetch": "^0.1.2",
+    "@edsolater/xstore": "^0.1.7",
+    "@raydium-io/raydium-sdk": "1.1.0-beta.5",
+    "@solana/wallet-adapter-base": "^0.9.7",
+    "@solana/wallet-adapter-react": "^0.15.6",
+    "@solana/wallet-adapter-wallets": "^0.16.5",
+    "@solana/web3.js": "^1.47.2",
+    "bn.js": "^5.2.1",
+    "react": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.0",
+    "prettier": "^2.7.1",
+    "typescript": "^4.7.4"
+  }
+}

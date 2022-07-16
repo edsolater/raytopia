@@ -1,23 +1,22 @@
 {
   "name": "raytopia",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "version": "0.1.0",
+  "description": "Fan version of Raydium V2 (base on @edsolater/*)",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev-ui": "pnpm --filter raytopia-ui dev"
   },
-  "dependencies": {
-    "@edsolater/uikit": "^0.1.3",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edsolater/raytopia.git"
   },
+  "author": "edsolater <edsolater@qq.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/edsolater/raytopia/issues"
+  },
+  "homepage": "https://github.com/edsolater/raytopia#readme",
   "devDependencies": {
-    "@types/react": "^18.0.15",
-    "@types/react-dom": "^18.0.6",
-    "@vitejs/plugin-react": "^2.0.0",
-    "typescript": "^4.7.4",
-    "vite": "^3.0.0"
+    "typescript": "^4.7.4"
   }
 }
