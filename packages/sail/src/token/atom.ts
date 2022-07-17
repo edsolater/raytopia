@@ -4,7 +4,7 @@
 
 import { createXStore, createZustandStoreHook, XStoreAtom } from '@edsolater/xstore'
 import { Price, PublicKeyish } from '@raydium-io/raydium-sdk'
-import toPubString from '../functions/toMintString'
+import { toPubString } from '../functions/toPubString'
 import { HexAddress, SrcAddress } from '../types/constants'
 import { autoRefreshTokenPrice } from './effects/autoRefreshTokenPrice'
 import { autoUpdateSelectableTokens } from './effects/autoUpdateSelectableTokens'

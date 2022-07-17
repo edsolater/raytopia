@@ -2,7 +2,7 @@ import { asyncMapAllSettled, listToMap, map, replaceItem } from '@edsolater/fnki
 import { jFetch } from '@edsolater/jfetch'
 import { createAtomEffect } from '@edsolater/xstore'
 import { Token, WSOL, PublicKeyish } from '@raydium-io/raydium-sdk'
-import toPubString from '../../functions/toMintString'
+import { toPubString } from '../../functions/toPubString'
 import { replaceValue } from '../../temp/replaceItem'
 import { HexAddress, SrcAddress } from '../../types/constants'
 import {

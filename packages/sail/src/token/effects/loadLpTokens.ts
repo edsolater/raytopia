@@ -1,7 +1,7 @@
 import { listToMap, shakeNil } from '@edsolater/fnkit'
 import { createAtomEffect, createSubscribePath } from '@edsolater/xstore'
 import { Token } from '@raydium-io/raydium-sdk'
-import toPubString from '../../functions/toMintString'
+import { toPubString } from '../../functions/toPubString'
 import { getLiquidityJsonInfoList } from '../../liquidity/utils/getLiquidityJsonInfoList'
 import { cloneFn } from '../../temp/createNewFn'
 import { tokenAtom } from '../atom'

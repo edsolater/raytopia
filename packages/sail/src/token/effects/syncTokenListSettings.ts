@@ -1,7 +1,7 @@
 import { map } from '@edsolater/fnkit'
 import { createAtomEffect, createSubscribePath } from '@edsolater/xstore'
 import { SplTokenJsonInfo } from '@raydium-io/raydium-sdk'
-import toPubString from '../../functions/toMintString'
+import { toPubString } from '../../functions/toPubString'
 import { getLocalItem, setLocalItem } from '../../temp/jStorage'
 import { SOLANA_TOKEN_LIST_NAME, tokenAtom, USER_ADDED_TOKEN_LIST_NAME, useToken } from '../atom'
 import { createSplToken } from './loadTokenList'

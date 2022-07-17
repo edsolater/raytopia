@@ -1,7 +1,7 @@
 import { add, listToMap, map, Numberish, shakeNil } from '@edsolater/fnkit'
 import { PublicKeyish } from '@raydium-io/raydium-sdk'
+import { isMintEqual, toNumberish, toPubString } from '../../functions'
 import { toBN } from '../../functions/toBN'
-import toPubString, { isMintEqual } from '../../functions/toMintString'
 import { toTokenAmount } from '../../functions/toTokenAmount'
 import { QuantumSOL, SplToken, TokenAmount, toQuantumSolAmount, WSOL, WSOLMint } from '../../token'
 import { ITokenAccount } from '../type'
@@ -25,7 +25,7 @@ export function parseBalanceFromTokenAccount({
   // !it is in BN
   const allWsolBalance = allTokenAccounts.some((t) => isMintEqual(t.mint, WSOLMint))
     ? toBN(
-        allTokenAccounts.reduce((acc, t) => (isMintEqual(t.mint, WSOLMint) ? add(acc, t.amount) : acc), 0 as Numberish)
+        allTokenAccounts.reduce((acc, t) => (isMintEqual(t.mint, WSOLMint) ? add(acc, toNumberish(t.amount)) : acc), 0 as Numberish)
       )
     : undefined
 

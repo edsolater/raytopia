@@ -1,17 +1,28 @@
-import { gt, gte, lt, mul, Numberish } from '@edsolater/fnkit'
+import { gt, gte, lt, minus, mul, notNullish, Numberish } from '@edsolater/fnkit'
 import { useSignalState } from '@edsolater/hookit'
-import { Button, DivProps, Row } from '@edsolater/uikit'
+import { Button, DivProps, Row, DecimalInput } from '@edsolater/uikit'
 import { useXStore } from '@edsolater/xstore'
 import {
-  isMintEqual, isQuantumSOL,
+  isMintEqual,
+  isQuantumSOL,
   isQuantumSOLVersionSOL,
-  isQuantumSOLVersionWSOL, isTokenAmount, SOL_BASE_BALANCE,
+  isQuantumSOLVersionWSOL,
+  isTokenAmount,
+  SOL_BASE_BALANCE,
   SplToken,
   toFraction,
-  tokenAtom, toNumberish, toPubString, toTokenAmount, toTotalPrice, toUsdVolume, walletAtom,
+  tokenAtom,
+  toNumberish,
+  toPubString,
+  toString,
+  toTokenAmount,
+  toTotalPrice,
+  toUsdVolume,
+  walletAtom,
   WSOLMint
 } from 'raytopia-sail'
 import { ReactNode, RefObject, useEffect, useImperativeHandle, useMemo, useRef } from 'react'
+import CoinAvatar from './CoinAvatar'
 
 export interface CoinInputBoxHandle {
   focusInput?: () => void
@@ -181,15 +192,17 @@ export default function CoinInputBox({
       // if user select sol max balance is -0.05
       maxBalance = toTokenAmount(
         maxValue.token,
-        gte(maxValue, SOL_BASE_BALANCE) ? sub(maxValue, SOL_BASE_BALANCE) : 0,
+        gte(toNumberish(maxValue), SOL_BASE_BALANCE) ? minus(toNumberish(maxValue), SOL_BASE_BALANCE) : 0,
         {
           alreadyDecimaled: true
         }
       )
     }
-    const newAmount = toString(mul(maxBalance, percent), {
-      decimalLength: isTokenAmount(maxValue) ? `auto ${maxValue.token.decimals}` : undefined
-    })
+    const newAmount = notNullish(maxBalance)
+      ? toString(mul(toNumberish(maxBalance), percent), {
+          decimalLength: isTokenAmount(maxValue) ? `auto ${maxValue.token.decimals}` : undefined
+        })
+      : ''
     onUserInput?.(newAmount) // set both outside and inside
     setInputedAmount(newAmount) // set both outside and inside
     isOutsideValueLocked.current = false
@@ -212,15 +225,15 @@ export default function CoinInputBox({
 
   return (
     <Row
-      className={twMerge(
+      className={[
         `flex-col bg-[#141041] cursor-text rounded-xl py-3 px-6 mobile:px-4 ${
           disabled && !noDisableStyle ? 'pointer-events-none-entirely cursor-default opacity-50' : ''
         }`,
         className
-      )}
+      ]}
       style={style}
       domRef={domRef}
-      htmlPorps={{
+      htmlProps={{
         tabIndex: 0
       }}
       onClick={focusInput}
@@ -251,14 +264,14 @@ export default function CoinInputBox({
                   ? 'clickable clickable-mask-offset-2'
                   : ''
               }`}
-              onClick={(ev) => {
-                ev.stopPropagation()
-                ev.preventDefault()
+              onClick={({ event }) => {
+                event.stopPropagation()
+                event.preventDefault()
                 if (canSwitchSOLWSOL) onTryToSwitchSOLWSOL?.()
                 if (disabledTokenSelect) return
                 onTryToTokenSelect?.()
               }}
-              htmlPorps={{
+              htmlProps={{
                 title: canSwitchSOLWSOL
                   ? isQuantumSOLVersionSOL(token)
                     ? 'switch to WSOL'
@@ -274,9 +287,10 @@ export default function CoinInputBox({
               >
                 {token?.symbol ?? '--'}
               </div>
-              {showTokenSelectIcon && !disabledTokenSelect && (
-                <Icon size='xs' heroIconName='chevron-down' className='text-[#ABC4FF]' />
-              )}
+              {showTokenSelectIcon &&
+                !disabledTokenSelect &&
+                // <Icon size='xs' heroIconName='chevron-down' className='text-[#ABC4FF]' />
+                '▼'}
             </Row>
             {/* divider */}
             <div className='my-1 mx-4 mobile:my-0 mobile:mx-2 border-r border-[rgba(171,196,255,0.5)] self-stretch' />

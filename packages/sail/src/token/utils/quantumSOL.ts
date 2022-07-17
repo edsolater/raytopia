@@ -1,12 +1,9 @@
 import { omit } from '@edsolater/fnkit'
 import { Currency, CurrencyAmount, PublicKeyish, Token, TokenAmount, ZERO } from '@raydium-io/raydium-sdk'
 import { PublicKey } from '@solana/web3.js'
-
 import BN from 'bn.js'
-import { isToken, isTokenAmount } from '../../functions/dataType'
-import toPubString from '../../functions/toMintString'
+import { isToken, isTokenAmount, toPubString } from '../../functions'
 import { HydratedTokenJsonInfo, SplToken } from '../type'
-
 
 export const WSOLMint = new PublicKey('So11111111111111111111111111111111111111112')
 export const SOLDecimals = 9

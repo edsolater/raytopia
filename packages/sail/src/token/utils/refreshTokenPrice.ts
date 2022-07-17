@@ -1,4 +1,4 @@
-import { flatMapEntries, groupBy, map, mapEntry, shakeNil } from '@edsolater/fnkit'
+import { flatMapEntry, groupBy, map, shakeNil } from '@edsolater/fnkit'
 import { jFetch } from '@edsolater/jfetch'
 import { toTokenPrice } from '../../functions/toTokenPrice'
 import { tokenAtom } from '../atom'
@@ -17,13 +17,11 @@ export async function refreshTokenPrice() {
 
   const coingeckoIdMap = shakeNil(groupBy(Object.values(tokenJsonInfos), (i) => i.extensions?.coingeckoId))
   const coingeckoTokenPrices = shakeNil(
-    flatMapEntries(
-      coingeckoPrices,
-      ([key, value]) =>
-        coingeckoIdMap[key]?.map((token) => [
-          token.mint,
-          value.usd ? toTokenPrice(token, value.usd, { alreadyDecimaled: true }) : undefined
-        ]) ?? []
+    flatMapEntry(coingeckoPrices, (value, key) =>
+      coingeckoIdMap[key]?.map((token) => ({
+        key: token.mint,
+        value: value.usd ? toTokenPrice(token, value.usd, { alreadyDecimaled: true }) : undefined
+      }))
     )
   )
 

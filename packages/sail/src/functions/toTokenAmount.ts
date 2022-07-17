@@ -2,21 +2,29 @@ import BN from 'bn.js'
 
 import { Fraction, Token, TokenAmount } from '@raydium-io/raydium-sdk'
 import { Numberish, parseNumberInfo } from '@edsolater/fnkit'
-import { QuantumSOLToken, QuantumSOLAmount, HydratedTokenJsonInfo, isQuantumSOL, WSOLMint, isQuantumSOLVersionSOL, toQuantumSolAmount } from '../token'
+import {
+  QuantumSOLToken,
+  QuantumSOLAmount,
+  HydratedTokenJsonInfo,
+  isQuantumSOL,
+  WSOLMint,
+  isQuantumSOLVersionSOL,
+  toQuantumSolAmount
+} from '../token'
 import { isToken } from './dataType'
 import { toBN } from './toBN'
-import { toFraction } from './toFraction'
-
+import { toFraction, toNumberish } from './toFraction'
+import { DexNumberish } from '../types/constants'
 
 /**
  *
  * @param token
- * @param amount amount can already decimaled
+ * @param dexamount amount can already decimaled
  * @returns
  */
 export function toTokenAmount(
   token: QuantumSOLToken,
-  amount: Numberish | undefined,
+  dexamount: DexNumberish,
   options?: {
     /**
      * without this options, inputed wsol will be quantumSol
@@ -29,7 +37,7 @@ export function toTokenAmount(
 ): QuantumSOLAmount
 export function toTokenAmount(
   token: HydratedTokenJsonInfo | Token,
-  amount: Numberish | undefined,
+  dexamount: DexNumberish,
   options?: {
     /**
      * without this options, inputed wsol will be quantumSol
@@ -42,7 +50,7 @@ export function toTokenAmount(
 ): TokenAmount
 export function toTokenAmount(
   token: HydratedTokenJsonInfo | Token | QuantumSOLToken,
-  amount: Numberish | undefined,
+  dexamount: DexNumberish,
   options?: {
     /**
      * without this options, inputed wsol will be quantumSol
@@ -53,6 +61,7 @@ export function toTokenAmount(
     alreadyDecimaled?: boolean // may cause bug, havn't test it
   }
 ): TokenAmount | QuantumSOLAmount {
+  const amount = toNumberish(dexamount)
   const parsedToken = isToken(token) ? token : new Token(token.mint, token.decimals, token.symbol, token.name)
 
   const numberDetails = parseNumberInfo(amount)

@@ -6,9 +6,9 @@
   "main": "src/index.ts",
   "sideEffects": false,
   "dependencies": {
-    "@edsolater/fnkit": "^0.1.2",
+    "@edsolater/fnkit": "^0.1.7",
     "@edsolater/hookit": "^0.1.2",
-    "@edsolater/jfetch": "^0.1.2",
+    "@edsolater/jfetch": "^0.1.1",
     "@edsolater/xstore": "^0.1.7",
     "@raydium-io/raydium-sdk": "1.1.0-beta.5",
     "@solana/wallet-adapter-base": "^0.9.7",

@@ -1,5 +1,5 @@
 import { PublicKeyish } from '@raydium-io/raydium-sdk'
-import toPubString from '../../functions/toMintString'
+import { toPubString } from '../../functions/toPubString'
 import { tokenAtom } from '../atom'
 import { LpToken, SplToken } from '../type'
 import { QuantumSOLVersionSOL, QuantumSOLVersionWSOL, SOLUrlMint, WSOLMint } from './quantumSOL'

@@ -1,8 +1,8 @@
-import { Numberish, tryCatch, parseNumberInfo } from '@edsolater/fnkit'
+import { Numberish, tryCatch, parseNumberInfo, toNumberishAtom } from '@edsolater/fnkit'
 import { Fraction, Percent, Price, TokenAmount, ZERO } from '@raydium-io/raydium-sdk'
-import BN from 'bn.js'
+import { DexNumberish } from '../types/constants'
 
-export function toFraction(value: Numberish | Fraction | BN): Fraction {
+export function toFraction(value: DexNumberish): Fraction {
   //  to complete math format(may have decimal), not int
   if (value instanceof Percent) return new Fraction(value.numerator, value.denominator)
 
@@ -24,7 +24,7 @@ export function toFraction(value: Numberish | Fraction | BN): Fraction {
   return new Fraction(details.numerator, details.denominator)
 }
 
-export function toFractionWithDecimals(value: Numberish | Fraction | BN): { fr: Fraction; decimals?: number } {
+export function toFractionWithDecimals(value: DexNumberish): { fr: Fraction; decimals?: number } {
   //  to complete math format(may have decimal), not int
   if (value instanceof Percent) return { fr: new Fraction(value.numerator, value.denominator) }
 
@@ -40,4 +40,12 @@ export function toFractionWithDecimals(value: Numberish | Fraction | BN): { fr: 
   const n = String(value)
   const details = parseNumberInfo(n)
   return { fr: new Fraction(details.numerator, details.denominator), decimals: details.dec?.length }
+}
+
+export function toNumberish(n: DexNumberish): Numberish {
+  const fraction = toFraction(n)
+  return toNumberishAtom({
+    denominator: BigInt(fraction.denominator.toString()),
+    numerator: BigInt(fraction.numerator.toString())
+  })
 }
