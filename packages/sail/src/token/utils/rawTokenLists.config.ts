@@ -1,4 +1,4 @@
-import { RAYDIUM_DEV_TOKEN_LIST_NAME, RAYDIUM_MAINNET_TOKEN_LIST_NAME } from '../atom'
+import { RAYDIUM_DEV_TOKEN_LIST_NAME, RAYDIUM_MAINNET_TOKEN_LIST_NAME } from "../SupportedTokenListSettingName"
 import { RaydiumDevTokenListJsonInfo, RaydiumTokenListJsonInfo, TokenListFetchConfigItemWithMethods } from '../type'
 
 export const rawTokenListConfigs = [

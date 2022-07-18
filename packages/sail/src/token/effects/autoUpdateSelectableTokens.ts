@@ -1,6 +1,7 @@
 import { createAtomEffect, createSubscribePath } from '@edsolater/xstore'
 import { toPubString } from '../../functions/toPubString'
-import { tokenAtom, USER_ADDED_TOKEN_LIST_NAME } from '../atom'
+import { tokenAtom } from '../atom'
+import { USER_ADDED_TOKEN_LIST_NAME } from "../SupportedTokenListSettingName"
 import { sortTokens } from '../utils/sortTokens'
 
 /**

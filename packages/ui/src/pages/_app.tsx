@@ -1,7 +1,9 @@
+import NoSsr from '../components/NoSsr'
+
 export default function Raytopia({ Component }) {
   return (
-    <div>
+    <NoSsr>
       <Component />
-    </div>
+    </NoSsr>
   )
 }

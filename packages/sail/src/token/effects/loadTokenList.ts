@@ -7,11 +7,13 @@ import { replaceValue } from '../../temp/replaceItem'
 import { HexAddress, SrcAddress } from '../../types/constants'
 import {
   useToken,
-  RAYDIUM_MAINNET_TOKEN_LIST_NAME,
-  SOLANA_TOKEN_LIST_NAME,
-  RAYDIUM_DEV_TOKEN_LIST_NAME,
   tokenAtom
 } from '../atom'
+import {
+  RAYDIUM_MAINNET_TOKEN_LIST_NAME,
+  SOLANA_TOKEN_LIST_NAME,
+  RAYDIUM_DEV_TOKEN_LIST_NAME
+} from "../SupportedTokenListSettingName"
 import {
   TokenJson,
   TokenListFetchConfigItem,

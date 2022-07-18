@@ -3,7 +3,8 @@ import { createAtomEffect, createSubscribePath } from '@edsolater/xstore'
 import { SplTokenJsonInfo } from '@raydium-io/raydium-sdk'
 import { toPubString } from '../../functions/toPubString'
 import { getLocalItem, setLocalItem } from '../../temp/jStorage'
-import { SOLANA_TOKEN_LIST_NAME, tokenAtom, USER_ADDED_TOKEN_LIST_NAME, useToken } from '../atom'
+import { tokenAtom, useToken } from '../atom'
+import { SOLANA_TOKEN_LIST_NAME, USER_ADDED_TOKEN_LIST_NAME } from "../SupportedTokenListSettingName"
 import { createSplToken } from './loadTokenList'
 
 const initlyLoadTokenListSettings = createAtomEffect(() => {
