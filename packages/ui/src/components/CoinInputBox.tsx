@@ -22,6 +22,8 @@ import {
   WSOLMint
 } from 'raytopia-sail'
 import { ReactNode, RefObject, useEffect, useImperativeHandle, useMemo, useRef } from 'react'
+import { icssPointerEventsNoneDeep } from '../styles/icssUtils'
+import { bonsaiDark } from '../styles/thmeColor'
 import CoinAvatar from './CoinAvatar'
 
 export interface CoinInputBoxHandle {
@@ -225,11 +227,18 @@ export default function CoinInputBox({
 
   return (
     <Row
-      className={[
-        `flex-col bg-[#141041] cursor-text rounded-xl py-3 px-6 mobile:px-4 ${
-          disabled && !noDisableStyle ? 'pointer-events-none-entirely cursor-default opacity-50' : ''
-        }`,
-        className
+      className={className}
+      icss={[
+        {
+          display: 'flex',
+          flexDirection: 'column',
+          background: bonsaiDark,
+          cursor: 'text',
+          borderRadius: 12,
+          paddingBlock: 12,
+          paddingInline: 24
+        },
+        disabled && !noDisableStyle ? icssPointerEventsNoneDeep && { cursor: 'unset', opacity: 0.5 } : undefined
       ]}
       style={style}
       domRef={domRef}

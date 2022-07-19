@@ -5,15 +5,12 @@ import { Token, WSOL, PublicKeyish } from '@raydium-io/raydium-sdk'
 import { toPubString } from '../../functions/toPubString'
 import { replaceValue } from '../../temp/replaceItem'
 import { HexAddress, SrcAddress } from '../../types/constants'
-import {
-  useToken,
-  tokenAtom
-} from '../atom'
+import { useToken, tokenAtom } from '../atom'
 import {
   RAYDIUM_MAINNET_TOKEN_LIST_NAME,
   SOLANA_TOKEN_LIST_NAME,
   RAYDIUM_DEV_TOKEN_LIST_NAME
-} from "../SupportedTokenListSettingName"
+} from '../SupportedTokenListSettingName'
 import {
   TokenJson,
   TokenListFetchConfigItem,
@@ -53,13 +50,13 @@ async function fetchTokenLists(rawListConfigs: TokenListFetchConfigItem[]): Prom
   const tokens: TokenJson[] = []
   await asyncMapAllSettled(rawListConfigs, async (raw) => {
     const response = await jFetch<RaydiumTokenListJsonInfo | RaydiumDevTokenListJsonInfo>(raw.url)
-    if (isRaydiumMainnetTokenListName(response)) {
+    if (isRaydiumMainnetTokenListName(response, raw.url)) {
       unOfficialMints.push(...response.unOfficial.map(({ mint }) => mint))
       officialMints.push(...deleteFetchedNativeSOLToken(response.official).map(({ mint }) => mint))
       tokens.push(...deleteFetchedNativeSOLToken(response.official), ...response.unOfficial)
       blacklist.push(...response.blacklist)
     }
-    if (isRaydiumDevTokenListName(response)) {
+    if (isRaydiumDevTokenListName(response, raw.url)) {
       devMints.push(...response.tokens.map(({ mint }) => mint))
       tokens.push(...response.tokens)
     }
